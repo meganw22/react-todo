@@ -1,7 +1,7 @@
 import { useState } from "react";
-// import ToDoList from "./components/ToDoList";
 import ListHeader from "./components/ListHeader";
 import Form from "./components/Form";
+import ToDoList from "./components/ToDoList";
 import "./components/styles.css";
 
 const App = () => {
@@ -19,6 +19,9 @@ const App = () => {
               allTasks={allTasks}
               setAllTasks={setAllTasks}
             />
+          </div>
+          <div>
+            <ToDoList allTasks={allTasks} setAllTasks={setAllTasks} />
           </div>
         </div>
       </div>

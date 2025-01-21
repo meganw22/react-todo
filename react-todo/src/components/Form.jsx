@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Form = ({ allTasks, setAllTasks, newTask, setNewTask }) => {
   const onNewTaskChange = (event) => {
@@ -8,7 +9,10 @@ const Form = ({ allTasks, setAllTasks, newTask, setNewTask }) => {
     event.preventDefault();
     if (newTask.trim() === "") return;
 
-    setAllTasks([...allTasks, newTask]);
+    setAllTasks([
+      ...allTasks,
+      { id: uuidv4(), title: newTask, completed: false },
+    ]);
     setNewTask("");
   };
 

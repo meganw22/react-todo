@@ -1,7 +1,20 @@
-import { useState } from "react";
+import React from "react";
 
-function App() {
-  <h1>Hello</h1>;
-}
+const ToDoList = ({ allTasks, setAllTasks }) => {
+  return (
+    <div>
+      {allTasks.map((task) => (
+        <li className="todo-list" key={task.id}>
+          <input
+            type="text"
+            value={task.title}
+            className="list"
+            onChange={(event) => event.preventDefault()}
+          />
+        </li>
+      ))}
+    </div>
+  );
+};
 
-export default App;
+export default ToDoList;
