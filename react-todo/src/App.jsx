@@ -7,6 +7,7 @@ import "./components/styles.css";
 const App = () => {
   const [newTask, setNewTask] = useState("");
   const [allTasks, setAllTasks] = useState([]);
+  const [editTask, setEditTask] = useState(null);
   return (
     <>
       <div className="container">
@@ -18,10 +19,16 @@ const App = () => {
               setNewTask={setNewTask}
               allTasks={allTasks}
               setAllTasks={setAllTasks}
+              editTask={editTask}
+              setEditTask={setEditTask}
             />
           </div>
           <div>
-            <ToDoList allTasks={allTasks} setAllTasks={setAllTasks} />
+            <ToDoList
+              allTasks={allTasks}
+              setAllTasks={setAllTasks}
+              setEditTask={setEditTask}
+            />
           </div>
         </div>
       </div>

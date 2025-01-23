@@ -1,6 +1,22 @@
 import React from "react";
 
-const ToDoList = ({ allTasks, setAllTasks }) => {
+const ToDoList = ({ allTasks, setAllTasks, setEditTask }) => {
+  const handleComplete = (task) => {
+    setAllTasks(
+      allTasks.map((item) => {
+        if (item.id === task.id) {
+          return { ...item, completed: !item.completed };
+        }
+        return item;
+      })
+    );
+  };
+
+  const handleEdit = ({ id }) => {
+    const findTask = allTasks.find((task) => task.id === id);
+    setEditTask(findTask);
+  };
+
   const handleDelete = ({ id }) => {
     setAllTasks(allTasks.filter((task) => task.id !== id));
   };
@@ -15,10 +31,16 @@ const ToDoList = ({ allTasks, setAllTasks }) => {
             onChange={(event) => event.preventDefault()}
           />
           <div>
-            <button className="button-complete task-button">
+            <button
+              className="button-edit task-button"
+              onClick={() => handleEdit(task)}
+            >
               <i className="far fa-edit"></i>
             </button>
-            <button className="button-edit task-button">
+            <button
+              className="button-complete task-button"
+              onClick={() => handleComplete(task)}
+            >
               <i className="far fa-check-square"></i>
             </button>
             <button

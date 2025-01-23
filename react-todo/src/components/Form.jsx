@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const Form = ({ allTasks, setAllTasks, newTask, setNewTask }) => {
+const Form = ({
+  input,
+  allTasks,
+  setAllTasks,
+  newTask,
+  setNewTask,
+  editTask,
+  setEditTask,
+}) => {
+  const updateTask = (title, id, completed) => {
+    const updateTask = allTasks.map((task) =>
+      task.id === id ? { title, id, completed } : task
+    );
+    setAllTasks(updateTask);
+    setEditTask("");
+  };
+  useEffect(() => {
+    if (editTask) {
+      setNewTask(editTask.title);
+    } else {
+      setNewTask("");
+    }
+  }, [editTask]);
+
   const onNewTaskChange = (event) => {
     setNewTask(event.target.value);
   };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (newTask.trim() === "") return;
-
-    setAllTasks([
-      ...allTasks,
-      { id: uuidv4(), title: newTask, completed: false },
-    ]);
+    if (!editTask) {
+      setAllTasks([
+        ...allTasks,
+        { id: uuidv4(), title: newTask, completed: false },
+      ]);
+      setNewTask("");
+    } else {
+      updateTask(newTask, editTask.id, editTask.completed);
+    }
     setNewTask("");
   };
 
