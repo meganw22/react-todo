@@ -73,17 +73,18 @@
 }
 
 .button-complete {
-    color: #ff6c6c;
-    margin-right: 10px;
+    color: lightseagreen;
+    margin-right: 15px;
 }
 
 .button-edit {
-    color: #e2d029;
-    margin-right: 10px;
+    color: green;
+    margin-right: 15px;
 }
 
 .button-delete {
-    color: lightseagreen;
+    
+    color: #ff6c6c;
     margin-right: 10px;
 }
 
