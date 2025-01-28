@@ -27,7 +27,7 @@ const ToDoList = ({ allTasks, setAllTasks, setEditTask }) => {
           <input
             type="text"
             value={task.title}
-            className="list"
+            className={`list ${task.completed ? "complete" : ""}`}
             onChange={(event) => event.preventDefault()}
           />
           <div>

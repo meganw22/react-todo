@@ -55,7 +55,7 @@ const Form = ({
           onChange={onNewTaskChange}
         />
         <button className="button-add" type="submit">
-          Add
+          {editTask ? "OK" : "Add"}
         </button>
       </form>
     </div>
